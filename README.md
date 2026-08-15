@@ -1,36 +1,32 @@
-# Telegram AutoForwarder Engine 🚀
+# Telegram AutoForwarder - Free Community Edition
 
-An asynchronous, event-driven Telegram message routing and forwarding engine built with Python. 
+A high-performance, asynchronous Telegram auto-forwarding bot and management engine. Built with `aiogram` and `telethon`, this project allows users to seamlessly link their Telegram accounts, configure complex routing rules, and automatically forward messages across channels, groups, and forums.
 
-This project bridges **Aiogram 3** (for a responsive, non-blocking bot management UI) and **Telethon** (for client-side message scraping and routing) into a single, cohesive application. It is designed to handle high-volume message filtering, dynamic RegEx parsing, and automatic session recovery without memory leaks.
+## 🚀 Key Features
 
-## 🌟 Key Features
+### Core Engine (`forwarder_core.py`)
+*   **Optimized Memory Management**: Memory leaks fixed via `TTLCache` for mapping messages[cite: 1].
+*   **Forum & Topic Support**: Full support for Telegram's `message_thread_id` and `reply_to` structures[cite: 1].
+*   **Dead Session Handling**: Auto-detects dead or unregistered sessions and notifies the manager safely[cite: 1].
+*   **Anti-Ban Entity Resolution**: Implements safer entity resolution to avoid API flood bans[cite: 1].
+*   **Restricted Channels Support**: Dedicated scraping logic for images in restricted channels where heavy media is skipped[cite: 1].
+*   **Dynamic Transformations**: Supports dynamic placeholders and Find & Replace rules[cite: 1].
 
-* **Dual-Engine Architecture:** Uses `aiogram` to manage user states, FSM (Finite State Machines), and inline dashboards, while `telethon` handles background listener tasks dynamically.
-* **Forum Topic Support:** Full support for Telegram Supergroup `message_thread_id` routing (capture and forward to specific topics seamlessly).
-* **Advanced Pipeline Filtering:**
-  * Sender whitelisting and blacklisting.
-  * Media & Text stripping (including Image scraping for restricted channels).
-  * RegEx pattern matching & automatic Find/Replace transformations.
-* **Resilience & Memory Management:** 
-  * Implements `TTLCache` to prevent memory leaks during long-running background tasks.
-  * Auto-detects dead/revoked API sessions, cleans up orphaned database locks, and notifies the user via DM to securely re-authenticate.
-  * Safely handles `FloodWaitError` constraints across parallel worker tasks.
-* **Filter Simulator (Dry Run):** An integrated testing suite allowing users to simulate their RegEx and routing logic before deploying to live channels.
+### Bot Dashboard (`manager_bot.py`)
+*   **Inline Dashboard**: Fully interactive UI built with `aiogram` for configuring routes[cite: 2].
+*   **Individual Route Toggles**: Pause or resume specific routes with `/onroute` and `/offroute`[cite: 2].
+*   **Resilient Error Handling**: Automatically logs massive system crashes and cleans up dead sessions[cite: 2].
+*   **Safe Database Transactions**: Utilizes `aiosqlite` for non-blocking file I/O and state storage[cite: 2].
 
-## 🛠️ Tech Stack
-
-* **Language:** Python 3.9+
-* **Frameworks:** `aiogram` (Bot API), `Telethon` (MTProto API)
-* **Database:** `aiosqlite` (Async SQLite3 for non-blocking I/O)
-* **Optimization:** `uvloop` for ultra-fast event loop processing, `psutil` for hardware load-balancing.
+## 🛠 Tech Stack
+*   **Python 3.9+**
+*   **Aiogram 3.x** (Bot Father UI / Dashboard)
+*   **Telethon** (Client-side scraping and forwarding engine)
+*   **SQLite (aiosqlite)** (Asynchronous database management)
 
 ## ⚙️ Installation & Setup
 
-### 1. Clone and Install Dependencies
-```bash
-git clone [https://github.com/pundhiranshul/telegram-autoforwarder.git](https://github.com/pundhiranshul/telegram-autoforwarder.git)
-cd telegram-autoforwarder
-python3 -m venv venv
-source venv/bin/activate  # On Windows use: venv\Scripts\activate
-pip install -r requirements.txt
+1. **Clone the repository:**
+   ```bash
+   git clone [https://github.com/yourusername/telegram-autoforwarder.git](https://github.com/yourusername/telegram-autoforwarder.git)
+   cd telegram-autoforwarder
