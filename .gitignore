@@ -1,0 +1,23 @@
+# Environment variables
+.env
+
+# Python cache
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Application Data & Downloads
+data/
+downloads/
+*.db
+*.sqlite3
+
+# Telethon Session Files
+*.session
+*.session-journal
+*.session.lock
+
+# OS generated files
+.DS_Store
+Thumbs.db
