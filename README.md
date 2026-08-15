@@ -147,6 +147,7 @@ python manager_bot.py
 ```text
 telegram-autoforwarder/
 ├── manager_bot.py
+├── forwarder_core.py
 ├── requirements.txt
 ├── README.md
 ├── .env
